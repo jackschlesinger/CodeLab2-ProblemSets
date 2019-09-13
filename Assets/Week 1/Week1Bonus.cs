@@ -19,9 +19,37 @@ public class Week1Bonus : MonoBehaviour
 
     private string SimplifyFraction(string toReduce)
     {
+        if (toReduce.Split('/').Length < 2) return toReduce;
 
+        var numerator = int.Parse(toReduce.Split('/')[0]);
+        var denominator = int.Parse(toReduce.Split('/')[1]);
+        var integer = 0;
 
-        return "";
+        /*if (numerator > denominator)
+        {
+            integer = numerator / denominator;
+        }*/
+        
+        while (numerator >= denominator)
+        {
+            numerator -= denominator;
+            integer++;
+        }
+    
+        if (numerator == 0) return integer.ToString();
+
+        for (var i = 2; i < denominator; i++)
+        {
+            var newNumerator = numerator * i / denominator ;
+
+            if (Mathf.Abs((float) newNumerator / i - (float) numerator / denominator) > 0.00001) continue;
+        
+            numerator = (int) newNumerator;
+            denominator = i;
+            break;
+        }
+    
+        return (integer > 0 ? integer + " " : "") + numerator + "/" + denominator;
     }
 
     // =========================== DON'T EDIT BELOW THIS LINE =========================== //
@@ -30,7 +58,7 @@ public class Week1Bonus : MonoBehaviour
 
     private void Update()
     {
-        simplifyFractionTests.text = "SameCase Assignment\n<align=left>\n";
+        simplifyFractionTests.text = "Simplify Fractions Assignment\n<align=left>\n";
         simplifyFractionTests.text += Success(SimplifyFraction("5/25") == "1/5") + " Handles reduction\n";
         simplifyFractionTests.text += Success(SimplifyFraction("5/63") == "5/63") + " Handles can't reducee\n";
         simplifyFractionTests.text += Success(SimplifyFraction("12/3") == "4") + " Reducing to integer\n";

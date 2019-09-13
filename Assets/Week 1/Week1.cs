@@ -18,8 +18,71 @@ public class Week1 : MonoBehaviour
 
     private bool SameCase(string toCheck)
     {
+        return toCheck == toCheck.ToUpper() || toCheck == toCheck.ToLower();
         
+        if (toCheck.Length == 0) return false;
+        
+        for (var i = 1; i < toCheck.Length; i++)
+        {
+            if (char.IsUpper(toCheck[0]) != char.IsUpper(toCheck[i]))
+                return false;
+        }
+
         return true;
+
+
+        /*int i = 0;
+
+        while (i < toCheck.Length)
+        {
+            Debug.Log(toCheck[i]);
+            i++;
+        }*/
+
+
+        /*
+         
+         var sameCase = true;
+         
+        foreach (var character in toCheck)
+        {
+            if (Char.IsUpper(character) != Char.IsUpper(toCheck[0]))
+            {
+                sameCase = false;
+                break;
+            }
+        }
+        
+        return sameCase;
+
+        /*
+        string upperCaseString = toCheck.ToUpper();  // take "AbCdE" turn it into "ABCDE"
+        string lowerCaseString = toCheck.ToLower();
+
+        return toCheck == toCheck.ToUpper(); || toCheck == toCheck.ToLower();
+        
+        if (toCheck == toCheck.ToUpper() || toCheck == toCheck.ToLower())
+        {
+            return true;
+        }
+
+        return false;
+        */
+
+        /*
+        
+        
+        if (toCheck.All(char.IsUpper) || toCheck.All(char.IsLower))
+        {
+            Debug.Log("the letters in " + toCheck + " ARE all the same case!");
+            return true;
+        }
+        else
+        {
+            Debug.Log("the letters in " + toCheck + " are NOT all the same case!");
+            return false;
+        }
+        */
     }
 
     /*
@@ -34,8 +97,22 @@ public class Week1 : MonoBehaviour
     
     private bool Palindrome(string toCheck)
     {
+        var x = "";
+        foreach (var character in toCheck) // "Racecars are cool."
+        {
+            if (char.IsLetter(character))
+            {
+                x += char.ToUpper(character).ToString(); // "RACECARSARECOOL"
+            }
+        }
+
+        float floatLength = x.Length;
         
-        
+        for (var i = 0; i < Mathf.Floor(f: x.Length / 2f); i++)
+        {
+            if (x[i] != x[x.Length - 1 - i]) return false;
+        }
+
         return true;
     }
 
