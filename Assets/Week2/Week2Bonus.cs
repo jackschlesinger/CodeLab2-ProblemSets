@@ -39,7 +39,7 @@ public class Week2Bonus : MonoBehaviour
         pigLatinTests.text += Success(PigLatinTranslator("apple") == "appleyay") + " Handles vowels\n";
         pigLatinTests.text += Success(PigLatinTranslator("I have an apple") == "Iyay avehay anyay appleyay") + " Handles multiple words\n";
         pigLatinTests.text += Success(PigLatinTranslator("Me?  I am someone, who has an apple.") == 
-                                                                                "Emay? Iyay amyay omeonesay, howay ashay anyay appleyay.") + " Handles punctuation.\n";
+                                                                                "Emay? Iyay amyay omeonesay, owhay ashay anyay appleyay.") + " Handles punctuation.\n";
     }
 
     private string Success(bool test)

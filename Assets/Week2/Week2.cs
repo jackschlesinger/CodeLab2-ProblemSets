@@ -13,7 +13,7 @@ public class Week2 : MonoBehaviour
 
     private float Median(int[] numbers)
     {
-       
+    
         return 0;
     }
 
@@ -26,7 +26,7 @@ public class Week2 : MonoBehaviour
      *     - SumOfOdd(5) ==> 1 + 3 + 5 ==> 9
      * 
     */
-    
+
     private int SumOfOdd(int upperBound)
     {
         
