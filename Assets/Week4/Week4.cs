@@ -18,9 +18,27 @@ public class Week4 : MonoBehaviour
 
     private int HowManyPrimes(int max)
     {
+        var count = 0;
         
+        for (var i = 2; i <= max; i++)
+        {
+            if (IsPrime(i)) count++;
+        }
         
-        return 0;
+        return count;
+    }
+
+    private bool IsPrime(int number)
+    {
+        for (var i = 2; i < number; i++)
+        {
+            if (number % i == 0)
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     /*
@@ -39,20 +57,34 @@ public class Week4 : MonoBehaviour
     {
         public override string Speak()
         {
-            return "";
+            return "Woof";
         }
 
         public override bool NeedsLeash()
         {
-            return false;
+            return true;
+        }
+
+        public virtual void RollOver()
+        {
+            Debug.Log("Rolled over.");
         }
     }
+
+    private class Beagle : Dog
+    {
+        public override void RollOver()
+        {
+            Debug.Log("Too Stubborn");
+        }
+    }
+    
 
     private class Cat : Pet
     {
         public override string Speak()
         {
-            return "";
+            return "Meow";
         }
 
         public override bool NeedsLeash()

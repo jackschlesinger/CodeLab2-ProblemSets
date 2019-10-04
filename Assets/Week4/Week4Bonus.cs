@@ -9,7 +9,7 @@ public class Week4Bonus : MonoBehaviour
 {
     /*
      * Create a function that takes in an array of numbers and returns
-     * the sum of that fibonacci number.
+     * the sum of their fibonacci numbers.
      * https://www.mathsisfun.com/numbers/fibonacci-sequence.html
      *
      * For Example:
@@ -22,7 +22,7 @@ public class Week4Bonus : MonoBehaviour
      *         0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55 => 55
      *         0, 1, 1, 2 => 2
      *         return 2 + 55 => 57
-     *    0 FibonacciSum(5)
+     *     - FibonacciSum(5)
      *         0, 1, 1, 2, 3 =>  3
      *         return 3
      * 
@@ -30,8 +30,40 @@ public class Week4Bonus : MonoBehaviour
 
     private int FibonacciSum(params int[] numbers)
     {
+        var sum = 0;
 
-        return 0;
+        foreach (var rank in numbers)
+        {
+            sum += GetFibonacciNumber(rank);
+        }
+
+        /*
+        for (var i = 0; i < numbers.Length; i++)
+        {
+            print((i + 1).ToString() + ": " + sum);
+            sum += GetFibonacciNumber(numbers[i]);
+        }
+        */
+
+        return sum;
+    }
+
+    private int GetFibonacciNumber(int rank)
+    {
+        var previous = 0;
+        var current = 1;
+
+        if (rank == 1) return previous;
+        
+        for (var i = 2; i < rank; i++)
+        {
+            var placeholder = current;
+            current += previous;
+
+            previous = placeholder;
+        }
+
+        return current;
     }
 
     // =========================== DON'T EDIT BELOW THIS LINE =========================== //
