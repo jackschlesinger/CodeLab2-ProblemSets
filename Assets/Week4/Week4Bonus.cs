@@ -40,7 +40,7 @@ public class Week4Bonus : MonoBehaviour
 
     private void Update()
     {
-        isRectangleTest.text = "Is Rectangle Assignment\n<align=left>\n";
+        isRectangleTest.text = "Fibonacci Sum Assignment\n<align=left>\n";
         isRectangleTest.text += Success(FibonacciSum(2, 5, 9) == 25) + " works for numbers in order.\n";
         isRectangleTest.text += Success(FibonacciSum(11, 4) == 57) + " works for number out of order.\n";
         isRectangleTest.text += Success(FibonacciSum(5) == 3) + " works for one number.\n";

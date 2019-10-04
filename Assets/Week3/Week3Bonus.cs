@@ -21,9 +21,21 @@ public class Week3Bonus : MonoBehaviour
     
     private Dictionary<T, int> Frequency<T>(T[] objects)
     {
+        var toReturn = new Dictionary<T, int>();
+
+        foreach (var item in objects)
+        {
+            if (toReturn.ContainsKey(item))
+            {
+                toReturn[item] = toReturn[item] + 1;
+            }
+            else
+            {
+                toReturn.Add(item, 1);
+            }
+        }
         
-        
-        return new Dictionary<T, int>();
+        return toReturn;
     }
 
     // =========================== DON'T EDIT BELOW THIS LINE =========================== //

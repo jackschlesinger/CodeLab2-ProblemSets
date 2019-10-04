@@ -18,6 +18,13 @@ public class Week3 : MonoBehaviour
 
     private bool AllAreUnique(string[] toCheck)
     {
+        var list = toCheck.ToList();
+        list.Sort();
+
+        for (int i = 0; i < list.Count - 1; i++)
+        {
+            if (list[i] == list[i + 1]) return false;
+        }
 
         return true;
     }
@@ -35,8 +42,23 @@ public class Week3 : MonoBehaviour
     
     private string RepeatShorter(string one, string two)
     {
+        var result = "";
 
-        return "";
+        if (two.Length > one.Length)
+        {
+            (one, two) = (two, one);
+        }
+
+        var index = 0;
+        
+        for (var i = 0; i < one.Length; i++)
+        {
+            result += two[index];
+            index++;
+            if (index >= two.Length) index = 0;
+        }
+        
+        return result;
     }
 
     // =========================== DON'T EDIT BELOW THIS LINE =========================== //
