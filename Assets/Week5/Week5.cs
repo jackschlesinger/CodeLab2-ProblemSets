@@ -59,7 +59,7 @@ public class Week5 : MonoBehaviour
                     new Vector2(6, 3)) + " correct for no acceleration.\n";
         positionAfterFramesText.text +=
             Success(PositionAfterFrames(new Vector2(0, 0), new Vector2(0, 0), new Vector2(0, 1), 8) ==
-                    new Vector2(0, 36)) + " correct for acceleration = 0.\n";
+                    new Vector2(0, 36)) + " correct for acceleration = (0, 1).\n";
 
         MoveBall();
     }
