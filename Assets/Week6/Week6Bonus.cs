@@ -8,30 +8,34 @@ using TMPro;
 public class Week6Bonus : MonoBehaviour
 {
     /*
-     * Create a function that returns "true" if the input array of four corners makes a
-     * rectangle.
+     * A number is a palindrome if it's numbers are the same backwards and forwards.
      *
-     * Remember - rectangles have 90 degree angles on each corner!
+     * A number's child is the sum of each adjacent pair of digits.
      *
-     * You can assume you're always getting four inputs.
+     * 123312's child is 363.
+     *
+     * Create a function that returns true if it or any of it's descendants with two or more digits is a palindrome.
+     *
+     * Note: Inputs will always have an even number of digits.
     */
 
-    private bool IsRectangle(Vector3[] corners)
+    private bool IsPalindromeAncestor(int number)
     {
-        
-
-        return true;
+        return false;
     }
 
     // =========================== DON'T EDIT BELOW THIS LINE =========================== //
 
-    public TextMeshProUGUI isRectangleTest;
+    public TextMeshProUGUI isPalindromeAncestor;
 
     private void Update()
     {
-        isRectangleTest.text = "Is Rectangle Assignment\n<align=left>\n";
-        isRectangleTest.text += Success(IsRectangle(new Vector3[] {Vector3.zero, Vector3.right, Vector3.one, Vector3.up})) + " identifies a rectangle.\n";
-        isRectangleTest.text += Success(!IsRectangle(new Vector3[] {Vector3.zero, Vector3.right, Vector3.one, Vector3.left})) + " identifies not a rectangle.\n";
+        isPalindromeAncestor.text = "Is Palindrome Ancestor Assignment\n<align=left>\n";
+        isPalindromeAncestor.text += Success(IsPalindromeAncestor(11211230)) + " works for 11211230.\n";
+        isPalindromeAncestor.text += Success(IsPalindromeAncestor(13001120)) + " works for 13001120.\n";
+        isPalindromeAncestor.text += Success(IsPalindromeAncestor(23336014)) + " works for 23336014.\n";
+        isPalindromeAncestor.text += Success(IsPalindromeAncestor(11)) + " works for 11.\n";
+        isPalindromeAncestor.text += Success(!IsPalindromeAncestor(12)) + " works for 12.\n";
         
     }
 
