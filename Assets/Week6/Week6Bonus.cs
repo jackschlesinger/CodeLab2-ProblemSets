@@ -21,8 +21,44 @@ public class Week6Bonus : MonoBehaviour
 
     private bool IsPalindromeAncestor(int number)
     {
+        while (number.ToString().Length > 1)
+        {
+            Debug.Log(number);
+        
+            if (NumberIsPalindrome(number)) return true;
+
+            number = GetChild(number);
+        }
+
         return false;
     }
+
+    private bool NumberIsPalindrome(int number)
+    {
+        for (var i = 0; i < number.ToString().Length / 2; i++)
+        {
+            if (number.ToString()[i] != number.ToString()[number.ToString().Length - 1 - i])
+                return false;
+        }
+
+        return true;
+    }
+
+    private int GetChild(int number)
+    {
+        var toReturn = "";
+    
+        for (var i = 0; i < number.ToString().Length; i+=2)
+        {
+            var first = Int32.Parse(number.ToString()[i].ToString());
+            var second = Int32.Parse(number.ToString()[i + 1].ToString());
+
+            toReturn += (first + second).ToString();
+        }
+
+        return Int32.Parse(toReturn);
+    }
+
 
     // =========================== DON'T EDIT BELOW THIS LINE =========================== //
 
