@@ -21,8 +21,13 @@ public class Week5 : MonoBehaviour
 
     private Vector2 PositionAfterFrames(Vector2 startingPosition, Vector2 velocity, Vector2 acceleration, int numberOfFrames)
     {
+        for (var i = 0; i < numberOfFrames; i++)
+        {
+            velocity += acceleration;
+            startingPosition += velocity;
+        }   
         
-        return Vector2.zero;
+        return startingPosition;
     }
 
     /*
@@ -31,8 +36,8 @@ public class Week5 : MonoBehaviour
     */
 
     public GameObject ball;
-    public float ballAcceleration;
-    private Vector2 ballSpeed;
+    public float ballAccelerationMagnitude;
+    private Vector2 _ballVelocity;
     
     private void MoveBall()
     {
@@ -40,7 +45,11 @@ public class Week5 : MonoBehaviour
         
         // Make the ball object accelerate towards the mouse.
 
-        
+        var acceleration = ballAccelerationMagnitude * Time.deltaTime * (mousePosition - (Vector2) ball.transform.position).normalized;
+
+        _ballVelocity += acceleration;
+
+        ball.transform.position = (Vector2) ball.transform.position + _ballVelocity;
     }
 
 

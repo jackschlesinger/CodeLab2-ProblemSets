@@ -16,8 +16,9 @@ public class Week5Bonus : MonoBehaviour
      * You can assume you're always getting four inputs.
     */
 
-    private bool IsRectangle(Vector3[] corners)
+    private bool IsRectangle(Vector2[] corners)
     {
+        
         
 
         return true;
@@ -30,8 +31,8 @@ public class Week5Bonus : MonoBehaviour
     private void Update()
     {
         isRectangleTest.text = "Is Rectangle Assignment\n<align=left>\n";
-        isRectangleTest.text += Success(IsRectangle(new Vector3[] {Vector3.zero, Vector3.right, Vector3.one, Vector3.up})) + " identifies a rectangle.\n";
-        isRectangleTest.text += Success(!IsRectangle(new Vector3[] {Vector3.zero, Vector3.right, Vector3.one, Vector3.left})) + " identifies not a rectangle.\n";
+        isRectangleTest.text += Success(IsRectangle(new Vector2[] {Vector2.zero, Vector2.right, Vector2.one, Vector2.up})) + " identifies a rectangle.\n";
+        isRectangleTest.text += Success(!IsRectangle(new Vector2[] {Vector2.zero, Vector2.right, Vector2.one, Vector2.left})) + " identifies not a rectangle.\n";
         
     }
 

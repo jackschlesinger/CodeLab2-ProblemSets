@@ -23,8 +23,32 @@ public class Week6 : MonoBehaviour
 
     private bool ValidateEmail(string email)
     {
+        var splitEmail = email.Split('@');
+
+        if (splitEmail.Length != 2) return false;
+
+        var firstHalf = splitEmail[0];
+
+        if (firstHalf.Length == 0) return false;
+
+        for (var i = 0; i < firstHalf.Length; i++)
+        {
+            if (firstHalf[i] == '.')
+            {
+                if (i == firstHalf.Length - 1) return false;
+                if (firstHalf[i + 1] == '.') return false;
+            }
+        }
+
+        var secondHalf = splitEmail[1];
+
+        var splitHalf = secondHalf.Split('.');
+ 
+        if (splitHalf.Length != 2) return false;
+
+        if (splitHalf[0].Length == 0 || splitHalf[1].Length == 0) return false;
         
-        return false;
+        return true;
     }
 
     /*
@@ -44,14 +68,38 @@ public class Week6 : MonoBehaviour
 
     private string ToSnakeCase(string input)
     {
+        var toReturn = "";
 
-        return input;
+        foreach (var letter in input)
+        {
+            if (char.IsUpper(letter)) //(letter.ToString().ToUpper() == letter.ToString())
+            {
+                toReturn += "_";
+            }
+            
+            toReturn += letter;
+        }
+        
+        return toReturn.ToLower();
     }
 
     private string ToCamelCase(string input)
     {
-        
-        return input;
+        var toReturn = "";
+            
+        for (var i = 0; i < input.Length; i++)
+        {
+            if (input[i] == '_')
+            {
+                i++;
+                toReturn += char.ToUpper(input[i]);
+            }
+            else
+            {
+                toReturn += input[i];
+            }
+        }
+        return toReturn;
     }
     
     
