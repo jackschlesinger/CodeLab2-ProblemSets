@@ -8,9 +8,7 @@ using TMPro;
 public class Week7Bonus : MonoBehaviour
 {
     /*
-     * A number is a palindrome if it's numbers are the same backwards and forwards.
-     *
-     * A number's child is the sum of each adjacent pair of digits.
+     * Identify where two strings have the same pattern of letters.
      *
      *     - HasSamePattern("ABAB", "CDCD") ➞ true
      *     - HasSamePattern("ABCBA", "BCDCB") ➞ true
