@@ -18,8 +18,50 @@ public class Week7Bonus : MonoBehaviour
 
     private bool HasSamePattern(string first, string second)
     {
+        if (first.Length != second.Length) return false;
+
+        var pattern = new Dictionary<char, char>();
+
+        for (var i = 0; i < first.Length; i++)
+        {
+            if (!pattern.ContainsKey(first[i]) && !pattern.ContainsValue(second[i]))
+            {
+                pattern.Add(first[i], second[i]);
+            }
+            else if (!pattern.ContainsKey(first[i]) || pattern[first[i]] != second[i])
+            {
+                return false;
+            }
+        } 
         
         return true;
+    }
+
+    private bool CheckPattern(string a, string b)
+    {
+        var aHash = GetHash(a);
+        var bHash = GetHash(b);
+
+        return aHash.SequenceEqual(bHash);
+    }
+
+    private int[] GetHash(string toHash)
+    {
+        int currentNumber = 0;
+        Dictionary<char, int> seenCharacters = new Dictionary<char, int>();
+        var toReturn = new int[toHash.Length];
+
+        for (var i = 0; i < toHash.Length; i++)
+        {
+            if (!seenCharacters.ContainsKey(toHash[i]))
+            {
+                seenCharacters.Add(toHash[i], currentNumber);
+                currentNumber++;
+            }
+            toReturn[i] = seenCharacters[toHash[i]];
+        }
+
+        return toReturn;
     }
 
     // =========================== DON'T EDIT BELOW THIS LINE =========================== //

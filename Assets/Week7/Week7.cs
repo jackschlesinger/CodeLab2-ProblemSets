@@ -18,8 +18,22 @@ public class Week7 : MonoBehaviour
 
     private int NextPrime(int starting)
     {
+        while (!IsPrime(++starting))
+        {
         
-        return 0;
+        }
+    
+        return starting;
+    }
+
+    private bool IsPrime(int number)
+    {
+        for (var i = 2; i < number; i++)
+        {
+            if (number % i == 0) return false;
+        }
+
+        return true;
     }
     
     /*
@@ -39,7 +53,13 @@ public class Week7 : MonoBehaviour
     
     private string CenturyFromYear(int year)
     {
-        return "";
+        var centuryNumber = ((year - 1) / 100) + 1;
+
+        return centuryNumber + (centuryNumber % 10 == 1 && centuryNumber > 20
+            ? "st century" : "th century");
+
+        if (centuryNumber % 10 == 1 && centuryNumber > 20) return centuryNumber + "st century";
+        return centuryNumber + "th century";
     }
 
 
