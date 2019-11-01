@@ -24,7 +24,31 @@ public class Week8 : MonoBehaviour
 
     private ulong Hexadecimal(string hexNumber)
     {
-        return 0UL;
+        var digit = 1UL;
+        var toReturn = 0UL;
+        
+        for (var i = hexNumber.Length - 1; hexNumber[i] != 'x'; i--)
+        {
+            toReturn += HexCharToDecimal(hexNumber[i]) * digit;
+
+            digit *= 16;
+        }
+        
+        return toReturn;
+    }
+
+    private ulong HexCharToDecimal(char hex)
+    {
+        switch (hex)
+        {
+            case 'A': return 10;
+            case 'B': return 11;
+            case 'C': return 12;
+            case 'D': return 13;
+            case 'E': return 14;
+            case 'F': return 15;
+            default: return ulong.Parse(hex.ToString());
+        }
     }
     
     /*
@@ -42,8 +66,78 @@ public class Week8 : MonoBehaviour
 
     private int SumValue(string word)
     {
-        return 0;
+        var toReturn = 0;
+        
+        foreach (var character in word)
+        {
+            toReturn += CharacterValue(character);
+        }
+        
+        return toReturn;
     }
+    
+    private int CharacterValue(char character)
+    {
+        switch (character.ToString().ToLower())
+        {
+            case "a":
+                return 1;
+            case "b":
+                return 2;
+            case "c":
+                return 3;
+            case "d":
+                return 4;
+            case "e":
+                return 5;
+            case "f":
+                return 6;
+            case "g":
+                return 7;
+            case "h":
+                return 8;
+            case "i":
+                return 9;
+            case "j":
+                return 10;
+            case "k":
+                return 11;
+            case "l":
+                return 12;
+            case "m":
+                return 13;
+            case "n":
+                return 14;
+            case "o":
+                return 15;
+            case "p":
+                return 16;
+            case "q":
+                return 17;
+            case "r":
+                return 18;
+            case "s":
+                return 19;
+            case "t":
+                return 20;
+            case "u":
+                return 21;
+            case "v":
+                return 22;
+            case "w":
+                return 23;
+            case "x":
+                return 24;
+            case "y":
+                return 25;
+            case "z":
+                return 26;
+            default:
+                return 0;
+        }
+    }
+
+    
 
     // =========================== DON'T EDIT BELOW THIS LINE =========================== //
 
@@ -52,6 +146,9 @@ public class Week8 : MonoBehaviour
     private void Update()
     {
         nextPrimeText.text = "Hexadecimal Assignment\n<align=left>\n";
+
+        Debug.Log(Hexadecimal("0xF"));
+        
         nextPrimeText.text += Success(Hexadecimal("0xF") == 15) + " correct for \"0xF\".\n";
         nextPrimeText.text += Success(Hexadecimal("0xFFFFFF") == 16777215) + " correct for \"0xFFFFFF\".\n";
         nextPrimeText.text += Success(Hexadecimal("0x8D2AB") == 578219) + " correct for \"0x8D2AB\".\n";
